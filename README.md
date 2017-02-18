@@ -34,8 +34,13 @@ Flask 개발 Example 모음
 + [heroku 연결](https://devcenter.heroku.com/articles/heroku-cli)
 + heroku에 `Personal apps` 만들기 (pro, stage) 이 후, git 연결
 + pro, stage workflow 이해
++ `config`파일 설정
 + [autoenv](https://github.com/kennethreitz/autoenv) 설정
 + 저장소별 config 설정 (Local, stage, pro) `APP_SETTINGS`
++ config 설정 확인
+    - `app.config.from_object(os.environ['APP_SETTINGS'])`
++ heroku 실행으로 결과 확인
+    - `heroku run python app.py --app YOUR-APP`
 
 ---
 ### 002 - Postgres, SQLAlchemy, and Alembic
