@@ -105,6 +105,36 @@ Flask 개발 Example 모음
 + postgres 버전
     - postgres (PostgreSQL) 9.6.2
 
+
+---
+### 003 - Text Processing With Requests, BeautifulSoup, and NLTK
+
++ env 환경 확인
++ (sudo) pip install requests beautifulsoup4 nltk 설치
+    - `request` -> a library for sending HTTP requests
+    - `BeautifulSoup` -> a tool used for scraping and parsing documents from the web
+    - `NLTK(Natural Language Toolkit)` -> a natural language processing library
++ hello world 파트를 없애고, URL로 랜더링 받도록 만들기 위해 `templates` 디렉토리를 만들고 `index.html` 을 만듦
++ `index.html`파일을 작성 -> `Jinja`의 기능으로 `for`loop를 사용해 error를 보여줄 수 있음
++ `app.py`파일 수정
++ `python manage.py runserver` 이 후, 확인
++ `app.py` 수정
+    - `request`를 사용해 method별 분류
++ `app.py` 재수정(text processing)
+    - `BeautifulSoup` 로 URL의 HTML 태그를 제외하고 도출
+    - `nltk`로 해당 글을 substring으로 나눔
+    - `punctuation` 정규표현식으로 제거 후, 글자 수 분석 [Counter](https://pymotw.com/3/collections/counter.html)
+    - 만들어 둔 `stop_word`파일 배열로 non-stop words 수 분석
+    - 정확한 활용을 위해, `mkdir nltk_data` 이후, `python -m nltk.downloader` 실행.
+    - 창이 나오면, 다운로드 디렉토리를 `whatever_the_absolute_path_to_your_app_is / nltk_data /`로 설정.
+    - `models`탭을 선택하고, `Identifier`에 `punkt`를 클릭하고 다운로드 [document](http://www.nltk.org/data.html#command-line-installation)
+    - 정렬 후 출력
++ `index.html` 수정
++ `python manage.py runserver` 이 후, 확인
++ 10개씩 보기 위해 `[:10]` 추가 수정
++ `heroku`에 올리기 전, 압축파일은 지우고, English tokenizer를 제외한건 지우고 올려야 시간이 적게 거림
++ 정규표현식으로 봤듯, 영어표현으로만 된 것이 분석되는걸 참고.
+
 ---
 ## 제작
 
@@ -119,6 +149,8 @@ Flask 개발 Example 모음
     - install && setting 완료
 + 2017 / 02 / 18
     - Postgres, SQLAlchemy, and Alembic 완료
++ 2017 / 02 / 19
+    - Text Processing With Requests, BeautifulSoup, and NLTK 완료
 
 ---
 ## 개발환경
