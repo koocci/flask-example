@@ -136,6 +136,26 @@ Flask 개발 Example 모음
 + 정규표현식으로 봤듯, 영어표현으로만 된 것이 분석되는걸 참고.
 
 ---
+### 004 - Implementing a Redis Task Queue
+
++ `brew install redis`
++ redis-server 실행 후, 새로운 터미널에 flask-example dir 이동, env 환경 확인
+    - redis-server 포트가 이미 실행중이라면, `redis-cli shutdown` 이 후 다시 실행
++ `pip install redis rq` , requirement 추가
++ worker.py 파일 생성
+    -  listen for queued tasks
+    - listened for a queue called `default` and established a connection to the Redis server on `localhost:6379`
++ 또다른 터미널에 `python worker.py` 실행
++ `app.py` 수정
+    - `q = Queue(connection=conn)` -> set up a Redis connection and initialized a queue based on that connection.
+    - `enqueue_call()` -> initialized
+    - `result_ttl=5000` -> RQ how long to hold on to the result of the job for – 5,000 seconds
++ `python manage.py runserver` 로 실행
+    -  실행시 실행시켜둔 `worker.py`에 변화가 있어야 함.
++ `app.py` 재수정
+    - `from flask import jsonify`
+
+---
 ## 제작
 
 + 구진현
@@ -151,6 +171,8 @@ Flask 개발 Example 모음
     - Postgres, SQLAlchemy, and Alembic 완료
 + 2017 / 02 / 19
     - Text Processing With Requests, BeautifulSoup, and NLTK 완료
++ 2017 / 02 / 21
+    - Implementing a Redis Task Queue 완료
 
 ---
 ## 개발환경
