@@ -156,6 +156,29 @@ Flask 개발 Example 모음
     - `from flask import jsonify`
 
 ---
+### 005 - Integrating Flask and Angular
+
++ 이전 `004` 당시 환경 설정
++ `angular` cdn index.html 삽입
+    - ng-app: <html ng-app="WordcountApp">
+    - ng-controller: <body ng-controller="WordcountController">
+    - ng-submit: <form role="form" ng-submit="getResults()">
++ `static` directory 생성 후, `main.js` 파일 생성
++ index 에 `<script src="{{ url_for('static', filename='main.js') }}"></script>` 삽입 후 main 작성
+    -  버튼 클릭 시, log 로 test 출력 확인
++ controller 내 injection 및 코드 수정
++ app.py 내 소스 수정
+    -  test시 id가 로그에 뜨면 완료
+    - main.js 가 refresh 되지 않는다면, `CMD + shift + R`로 캐시 제거
++ `main.js` 함수 추가 및 `$timeout` injection 추가
++ `index.html` DOM 수정
+    - required 추가
+    - `jinja2` 태그 제거 - client 에서 제어 -> angular 사용
+    - `$interpolateProvider`를 이용해 angular의 템플릿을 제어하는 것도 좋은 방법
++ `poller`함수 수정
+    - test가 잘된다면, DOM을 비꾸어 좀더 이쁘게 변경
+
+---
 ## 제작
 
 + 구진현
@@ -173,6 +196,8 @@ Flask 개발 Example 모음
     - Text Processing With Requests, BeautifulSoup, and NLTK 완료
 + 2017 / 02 / 21
     - Implementing a Redis Task Queue 완료
++ 2017 / 02 / 23
+    - Integrating Flask and Angular 완료
 
 ---
 ## 개발환경
